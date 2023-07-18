@@ -1,0 +1,8 @@
+node{
+    stage('SCM Checkout'){
+        git 'https://github.com/pops54321/JenkinsPipelineIntegrateSonar'
+    }
+    stage('Compile-Package'){
+       sh 'mvn package'
+    }
+}
