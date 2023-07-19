@@ -1,8 +1,21 @@
 node{
+    stages{
     stage('SCM Checkout'){
-        git 'https://github.com/pops54321/JenkinsPipelineIntegrateSonar'
+        steps{
+            git 'https://github.com/pops54321/JenkinsPipelineIntegrateSonar'
+        }
     }
     stage('Compile-Package'){
-       sh 'mvn package'
+        steps{
+           sh 'mvn clean install'
+            echo "maven compiled the package"
+        }
     }
+    stage('SonarQube-analysis'){
+        steps{
+            sh 'sonar:sonar'
+            echo "Sonar generated the report"
+        }
+    }
+}
 }
