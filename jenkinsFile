@@ -1,8 +1,10 @@
-node{
+pipeline{
+    agent any
     stages{
-    stage('SCM Checkout'){
-        steps{
+        stage('SCM Checkout'){
+            steps{
             git 'https://github.com/pops54321/JenkinsPipelineIntegrateSonar'
+            echo "SCM checkout done"
         }
     }
     stage('Compile-Package'){
